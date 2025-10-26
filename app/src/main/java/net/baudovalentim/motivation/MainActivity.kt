@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-      if (v.id == R.id.button_new_phrase) {
+      if (v?.id == R.id.button_new_phrase) {
           handleNewPhrase()
       }
     }
