@@ -16,7 +16,7 @@
         android:layout_height="72dp"/>
     
     <ImageView
-        app:tint="@color/white"
+        app:tint="@color/black"
         android:id="@+id/image_all"
         android:src="@drawable/ic_all"
         android:layout_marginStart="32dp"
@@ -26,7 +26,7 @@
         android:layout_height="48dp" />
 
     <ImageView
-        app:tint="@color/white"
+        app:tint="@color/black"
         android:id="@+id/image_happy"
         android:src="@drawable/ic_happy"
         android:layout_centerHorizontal="true"
@@ -36,7 +36,7 @@
         android:layout_height="48dp" />
 
     <ImageView
-        app:tint="@color/white"
+        app:tint="@color/black"
         android:id="@+id/image_sunny"
         android:src="@drawable/ic_sunny"
         android:layout_alignParentEnd="true"
