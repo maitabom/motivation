@@ -2,6 +2,7 @@ package net.baudovalentim.motivation.repositories
 
 import net.baudovalentim.motivation.data.Phrase
 import net.baudovalentim.motivation.utils.MotivationConstants
+import kotlin.random.Random
 
 class PhraseRepository {
 
@@ -24,7 +25,15 @@ class PhraseRepository {
         Phrase("Riscos devem ser corridos, porque o maior perigo é não arriscar nada!", sunny)
     )
 
-    fun getPhrase(): String {
-        return ""
+    fun getPhrase(filter: Int): String {
+        if (filter == MotivationConstants.PHRASE.ALL) {
+            val index = Random.nextInt(listPhrases.size)
+            return listPhrases[index].description
+        } else {
+            val filtered = listPhrases.filter { it.category == filter }
+            val index = Random.nextInt(filtered.size)
+
+            return filtered[index].description
+        }
     }
 }
