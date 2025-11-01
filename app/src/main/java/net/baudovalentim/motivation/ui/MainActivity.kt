@@ -9,12 +9,14 @@ import androidx.core.view.WindowInsetsCompat
 import net.baudovalentim.motivation.R
 import net.baudovalentim.motivation.databinding.ActivityMainBinding
 import net.baudovalentim.motivation.preferences.SecurityPreferences
+import net.baudovalentim.motivation.repositories.PhraseRepository
 import net.baudovalentim.motivation.utils.MotivationConstants
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var securityPreferences: SecurityPreferences
+    private val phraseRepository = PhraseRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +34,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         setListeners()
         getUserName()
+        refreshPhrase()
     }
-
-
 
     override fun onClick(v: View?) {
       if (v?.id == R.id.button_new_phrase) {
           handleNewPhrase()
       }
+    }
+
+    private fun refreshPhrase() {
+        binding.textPhrase.text = phraseRepository.getPhrase()
     }
 
     private fun handleNewPhrase() {
@@ -48,7 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun getUserName() {
         val name = securityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
-        binding.textName.text = "Olá, $name!"
+        binding.textName.text = "Olá, ${name.trim()}!"
     }
 
     private fun setListeners() {
