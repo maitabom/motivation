@@ -33,11 +33,22 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         setListeners()
+        verifyUserName()
     }
 
     override fun onClick(v: View?) {
         if (v?.id == R.id.button_save) {
             handleSave()
+        }
+    }
+
+    private fun verifyUserName() {
+        val name = securityPreferences.getString(MotivationConstants.KEY.PERSON_NAME)
+
+        if (name.isNotEmpty()) {
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
